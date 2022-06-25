@@ -1,4 +1,6 @@
-﻿namespace Kata.Domain
+﻿using System.Text.RegularExpressions;
+
+namespace Kata.Domain
 {
     public class Katas
     {
@@ -40,6 +42,47 @@
                     );
             }
             return result == value;
+        }
+        #endregion
+
+        #region DuplicateEncode
+        public static string DuplicateEncode(string word)
+        {
+            // Lower case alphanumeric chars
+            word=Regex.Replace(word, @"[A-Z]", m => m.ToString().ToLower());
+
+            // Store idx of char found once
+            List<int> indexesOnce = new List<int>();
+            int idx = 0;
+            foreach (var c in word)
+            {
+                if (CharFoundOnceInString(c, word))
+                    indexesOnce.Add(idx);
+                idx++;
+            }
+
+            // Replace char found once by ( else by )
+            var charToInsert = Char.MinValue;
+            char[] arrResult = new char[word.Length];
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (indexesOnce.Any(idx => idx == i))
+                    charToInsert = '(';
+                else
+                    charToInsert = ')';
+                arrResult[i] = charToInsert;
+            }
+            return new string(arrResult);
+        }
+        /// <summary>
+        /// Search for char c found once in string str
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="str"></param>
+        /// <returns>true if char c found once only</returns>
+        private static bool CharFoundOnceInString(char c,string str)
+        {
+            return str.Count(ch => ch == c) == 1;
         }
         #endregion
     }
