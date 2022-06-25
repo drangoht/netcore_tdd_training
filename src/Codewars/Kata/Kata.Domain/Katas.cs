@@ -1,25 +1,21 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace Kata.Domain
+﻿namespace Kata.Domain
 {
     public class Katas
     {
         public static string ToCamelCase(string str)
         {
-            var result = "";
-            if (str.Contains("_"))
-                result = ArrayToUpperCase(str.Split("_"));
-            if (str.Contains("-"))
-                result = ArrayToUpperCase(str.Split("-"));
+            var result = str;
+            if (result.Contains("_") || result.Contains("-"))
+                result = ArrayToUpperCase(result.Split('_','-'));
+
             return result;
-      }
+        }
         private static string ArrayToUpperCase(string[] arrStr)
         {
             var camelCaseStr = arrStr[0];
             for (int i=1;i<arrStr?.Length;i++)
             {
+                // Set first char of each word from second word to uppercase
                 camelCaseStr += arrStr[i].Substring(0,1).ToUpperInvariant() + arrStr[i].Substring(1);
             }
             return camelCaseStr;
