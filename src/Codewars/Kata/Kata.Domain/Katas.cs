@@ -2,12 +2,12 @@
 {
     public class Katas
     {
+        #region ToCamelCase
         public static string ToCamelCase(string str)
         {
             var result = str;
             if (result.Contains("_") || result.Contains("-"))
                 result = ArrayToUpperCase(result.Split('_','-'));
-
             return result;
         }
         private static string ArrayToUpperCase(string[] arrStr)
@@ -20,5 +20,14 @@
             }
             return camelCaseStr;
         }
+        #endregion
+
+        #region Narcissistic
+        public static bool Narcissistic(int value)
+        {
+            // Code me
+            return true;
+        }
+        #endregion
     }
 }
