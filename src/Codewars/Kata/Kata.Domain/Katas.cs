@@ -25,8 +25,21 @@
         #region Narcissistic
         public static bool Narcissistic(int value)
         {
-            // Code me
-            return true;
+
+            // not optimal but ok for learning TDD
+            var str = value.ToString();
+            int nbDigits = str.Length;
+            long result = 0;
+            foreach(char c in str)
+            {
+                result += Convert.ToInt64(
+                    Math.Pow(
+                        Convert.ToDouble(c.ToString()), 
+                        Convert.ToDouble(nbDigits)
+                        )
+                    );
+            }
+            return result == value;
         }
         #endregion
     }

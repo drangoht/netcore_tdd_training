@@ -26,12 +26,8 @@ namespace Kata.UnitTests
 
         [Theory]
         [MemberData(nameof(DataForTest1))]
-        public void ReturnCamelCaseWhenDashOrUnderscoreFound(int number, bool result)
+        public void ReturnTrueWhenNumberIsNarcissistic(int number, bool result)
         {
-            // Arrange
-            // Act
-            // Assert
-
             Assert.Equal(result, Katas.Narcissistic(number));
         }
     }
