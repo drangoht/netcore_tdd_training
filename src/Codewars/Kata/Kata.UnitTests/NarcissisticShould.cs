@@ -21,7 +21,7 @@ namespace Kata.UnitTests
     {
         public static TheoryData<int, bool> DataForTest1 = new TheoryData<int, bool> {
             { 1, true },
-            { 371, true }
+            { 373, true }
         };
 
         [Theory]
