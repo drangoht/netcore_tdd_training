@@ -18,10 +18,11 @@ namespace Kata.UnitTests
         public void ReturnCamelCaseWhenDashOrUnderscoreFound(string expected, string accept)
         {
             // Arrange
+            var katas = new Katas();
             // Act
             // Assert
 
-            Assert.Equal(expected, Katas.ToCamelCase(accept));
+            Assert.Equal(expected, katas.ToCamelCase(accept));
         }
     }
 }

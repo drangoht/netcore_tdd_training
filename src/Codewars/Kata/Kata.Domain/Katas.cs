@@ -2,17 +2,24 @@
 
 namespace Kata.Domain
 {
-    public class Katas
+    public interface IKatas
+    {
+        string ToCamelCase(string str);
+        bool Narcissistic(int value);
+
+        string DuplicateEncode(string word);
+    }
+    public class Katas : IKatas
     {
         #region ToCamelCase
-        public static string ToCamelCase(string str)
+        public string ToCamelCase(string str)
         {
             var result = str;
             if (result.Contains("_") || result.Contains("-"))
                 result = ArrayToUpperCase(result.Split('_','-'));
             return result;
         }
-        private static string ArrayToUpperCase(string[] arrStr)
+        private string ArrayToUpperCase(string[] arrStr)
         {
             var camelCaseStr = arrStr[0];
             for (int i=1;i<arrStr?.Length;i++)
@@ -25,7 +32,7 @@ namespace Kata.Domain
         #endregion
 
         #region Narcissistic
-        public static bool Narcissistic(int value)
+        public bool Narcissistic(int value)
         {
 
             // not optimal but ok for learning TDD
@@ -46,7 +53,7 @@ namespace Kata.Domain
         #endregion
 
         #region DuplicateEncode
-        public static string DuplicateEncode(string word)
+        public string DuplicateEncode(string word)
         {
             // Lower case alphanumeric chars
             word=Regex.Replace(word, @"[A-Z]", m => m.ToString().ToLower());
@@ -80,7 +87,7 @@ namespace Kata.Domain
         /// <param name="c"></param>
         /// <param name="str"></param>
         /// <returns>true if char c found once only</returns>
-        private static bool CharFoundOnceInString(char c,string str)
+        private bool CharFoundOnceInString(char c,string str)
         {
             return str.Count(ch => ch == c) == 1;
         }

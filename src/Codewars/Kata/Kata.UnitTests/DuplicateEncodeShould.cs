@@ -21,10 +21,11 @@ namespace Kata.UnitTests
         [Fact]
         public void ReturnRightEncodageFromDefinedRule()
         {
-            Assert.Equal("(((", Katas.DuplicateEncode("din"));
-            Assert.Equal("()()()", Katas.DuplicateEncode("recede"));
-            Assert.Equal(")())())", Katas.DuplicateEncode("Success"));
-            Assert.Equal("))((", Katas.DuplicateEncode("(( @"));
+            var katas = new Katas();
+            Assert.Equal("(((", katas.DuplicateEncode("din"));
+            Assert.Equal("()()()", katas.DuplicateEncode("recede"));
+            Assert.Equal(")())())", katas.DuplicateEncode("Success"));
+            Assert.Equal("))((", katas.DuplicateEncode("(( @"));
         }
     }
 }
