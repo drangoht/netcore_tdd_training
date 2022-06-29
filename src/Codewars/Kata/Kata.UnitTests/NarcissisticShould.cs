@@ -28,7 +28,8 @@ namespace Kata.UnitTests
         [MemberData(nameof(DataForTest1))]
         public void ReturnTrueWhenNumberIsNarcissistic(int number, bool result)
         {
-            Assert.Equal(result, Katas.Narcissistic(number));
+            var katas = new Katas();
+            Assert.Equal(result, katas.Narcissistic(number));
         }
     }
 }
