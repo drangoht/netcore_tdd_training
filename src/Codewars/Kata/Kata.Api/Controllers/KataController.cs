@@ -1,4 +1,5 @@
 ﻿using Kata.Domain;
+using Kata.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace Kata.Api.Controllers
         {
             _katas = katas;
         }
-        [HttpGet]
+        [HttpGet()]
         public ActionResult Index()
         {
             return Ok("It works!");
@@ -23,19 +24,31 @@ namespace Kata.Api.Controllers
         [HttpGet("to_camel_case/{strToConvert}")]
         public ActionResult ToCamelCase(string strToConvert)
         {
-            return Ok(_katas.ToCamelCase(strToConvert));
+            var res = new CamelCaseResponse()
+            {
+                Result = _katas.ToCamelCase(strToConvert)
+            };
+            return Ok(res);
         }
 
         [HttpGet("duplicate_encode/{strToEncode}")]
         public ActionResult DuplicateEncode(string strToEncode)
         {
-            return Ok(_katas.DuplicateEncode(strToEncode));
+            var res = new DuplicateEncodeResponse()
+            {
+                Result = _katas.DuplicateEncode(strToEncode)
+            };
+            return Ok(res);
         }
 
         [HttpGet("narcissistic/{number:int}")]
         public ActionResult Narcissistic(int number)
         {
-            return Ok(_katas.Narcissistic(number));
+            var res = new NarcissisticResponse()
+            {
+                Result = _katas.Narcissistic(number)
+            };
+            return Ok(res);
         }
     }
 }

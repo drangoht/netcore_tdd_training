@@ -18,14 +18,15 @@ namespace Kata.UnitTests
     public class DuplicateEncodeShould
     {
 
-        [Fact]
-        public void ReturnRightEncodageFromDefinedRule()
+        [Theory]
+        [InlineData("(((", "din")]
+        [InlineData("()()()", "recede")]
+        [InlineData(")())())", "Success")]
+        [InlineData("))((", "(( @")]
+        public void ReturnRightEncodageFromDefinedRule(string expected,string accept)
         {
             var katas = new Katas();
-            Assert.Equal("(((", katas.DuplicateEncode("din"));
-            Assert.Equal("()()()", katas.DuplicateEncode("recede"));
-            Assert.Equal(")())())", katas.DuplicateEncode("Success"));
-            Assert.Equal("))((", katas.DuplicateEncode("(( @"));
+            Assert.Equal(expected, katas.DuplicateEncode(accept));
         }
     }
 }
