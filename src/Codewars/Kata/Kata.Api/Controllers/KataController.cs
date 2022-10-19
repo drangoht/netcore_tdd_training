@@ -3,6 +3,7 @@ using Kata.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Kata.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -47,6 +48,16 @@ namespace Kata.Api.Controllers
             var res = new NarcissisticResponse()
             {
                 Result = _katas.Narcissistic(number)
+            };
+            return Ok(res);
+        }
+
+        [HttpPost("maxsequence")]
+        public ActionResult MaxSequence(int[] numbers)
+        {
+            var res = new MaxSequenceResponse()
+            {
+                Result = _katas.MaxSequence(numbers)
             };
             return Ok(res);
         }

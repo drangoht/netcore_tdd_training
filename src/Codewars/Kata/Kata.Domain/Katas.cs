@@ -8,6 +8,9 @@ namespace Kata.Domain
         bool Narcissistic(int value);
 
         string DuplicateEncode(string word);
+
+        public int MaxSequence(int[] arr);
+
     }
     public class Katas : IKatas
     {
@@ -90,6 +93,26 @@ namespace Kata.Domain
         private bool CharFoundOnceInString(char c,string str)
         {
             return str.Count(ch => ch == c) == 1;
+        }
+        #endregion
+
+        #region MaxSequence
+
+        // [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+        public int MaxSequence(int[] arr)
+        {
+            var currSum = 0;
+            var maxSum = int.MinValue;
+            foreach (var i in arr)
+            {
+                currSum += i;
+                if (currSum < 0) currSum = 0;
+                if ((currSum >= 0) && (currSum > maxSum)) maxSum = currSum;
+                else if (maxSum < i) maxSum = i;
+            }
+            
+            return maxSum==int.MinValue?0:maxSum;
         }
         #endregion
     }
