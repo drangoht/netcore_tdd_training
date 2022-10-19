@@ -26,4 +26,13 @@
         }
         public bool Result { get; set; }
     }
+
+    public class MaxSequenceResponse
+    {
+        public MaxSequenceResponse()
+        {
+
+        }
+        public int Result { get; set; }
+    }
 }
