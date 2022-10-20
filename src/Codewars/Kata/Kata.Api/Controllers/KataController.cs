@@ -61,6 +61,16 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+
+        [HttpGet("isvalidip/{ipV4}")]
+        public ActionResult IsValidIP(string ipV4)
+        {
+            var res = new IsValidIPResponse()
+            {
+                Result = _katas.IsValidIP(ipV4)
+            };
+            return Ok(res);
+        }
     }
 }
 

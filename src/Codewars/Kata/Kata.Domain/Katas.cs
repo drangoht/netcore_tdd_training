@@ -10,7 +10,7 @@ namespace Kata.Domain
         string DuplicateEncode(string word);
 
         public int MaxSequence(int[] arr);
-
+        public bool IsValidIP(string ipAddres);
     }
     public class Katas : IKatas
     {
@@ -98,8 +98,6 @@ namespace Kata.Domain
 
         #region MaxSequence
 
-        // [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-
         public int MaxSequence(int[] arr)
         {
             var currSum = 0;
@@ -113,6 +111,15 @@ namespace Kata.Domain
             }
             
             return maxSum==int.MinValue?0:maxSum;
+        }
+        #endregion
+
+        #region IsValidIP
+        // ^(?!0.)\d{1,3}\.(?!0.)\d{1,3}\.(?!0.)\d{1,3}\.(?!0.)\d{1,3}$
+        // ^((25[0-5]|(2[0-4]|1/d|[1-9]|)/d)(/.(?!$)|$)){4}
+        public bool IsValidIP(string ipAddres)
+        {
+            return Regex.Match(ipAddres, "^0.0.0.0|^(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", RegexOptions.None).Success;
         }
         #endregion
     }
