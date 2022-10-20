@@ -35,4 +35,13 @@
         }
         public int Result { get; set; }
     }
+
+    public class IsValidIPResponse
+    {
+        public IsValidIPResponse()
+        {
+
+        }
+        public bool Result { get; set; }
+    }
 }
