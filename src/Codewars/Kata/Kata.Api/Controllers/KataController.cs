@@ -71,6 +71,16 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+
+        [HttpGet("strCount/{str}/{strToSearch}")]
+        public ActionResult StrCount(string str, string strToSearch)
+        {
+            var res = new StrCountResponse()
+            {
+                Result = _katas.StrCount(str, strToSearch)
+            };
+            return Ok(res);
+        }
     }
 }
 

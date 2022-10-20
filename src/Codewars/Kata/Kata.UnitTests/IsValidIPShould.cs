@@ -1,19 +1,24 @@
+using FluentAssertions.Equivalency;
 using Kata.Domain;
+using System.ComponentModel;
+using System;
 namespace Kata.UnitTests
 {
     /// <summary>
-    /// The goal of this exercise is to convert a string to a new string where each character 
-    /// in the new string is "(" if that character appears only once in the original string, or ")" 
-    /// if that character appears more than once in the original string. Ignore capitalization 
-    /// when determining if a character is a duplicate.
-    /// Examples
-    ///    "din"      =>  "((("
-    ///    "recede"   =>  "()()()"
-    ///    "Success"  =>  ")())())"
-    ///    "(( @"     =>  "))((" 
-    /// Notes
-    /// Assertion messages may be unclear about what they display in some languages. 
-    /// If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+    /// Write an algorithm that will identify valid IPv4 addresses in dot-decimal format.IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+
+    /// Valid inputs examples:
+    /// Examples of valid inputs:
+    /// 1.2.3.4
+    /// 123.45.67.89
+    /// Invalid input examples:
+    /// 1.2.3
+    /// 1.2.3.4.5
+    /// 123.456.78.90
+    /// 123.045.067.089
+    /// Notes:
+    /// Leading zeros (e.g. 01.02.03.04) are considered invalid
+    /// Inputs are guaranteed to be a single string
     /// </summary>
     public class IsValidIPShould
     {

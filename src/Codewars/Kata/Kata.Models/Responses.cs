@@ -44,4 +44,13 @@
         }
         public bool Result { get; set; }
     }
+
+    public class StrCountResponse
+    {
+        public StrCountResponse()
+        {
+
+        }
+        public int Result { get; set; }
+    }
 }

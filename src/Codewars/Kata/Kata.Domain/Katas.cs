@@ -11,6 +11,8 @@ namespace Kata.Domain
 
         public int MaxSequence(int[] arr);
         public bool IsValidIP(string ipAddres);
+
+        public int StrCount(string str, string searchedStr);
     }
     public class Katas : IKatas
     {
@@ -120,6 +122,13 @@ namespace Kata.Domain
         public bool IsValidIP(string ipAddres)
         {
             return Regex.Match(ipAddres, "^0.0.0.0|^(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(?!0+)(0|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", RegexOptions.None).Success;
+        }
+        #endregion
+
+        #region StrCount
+        public int StrCount(string str, string searchedStr)
+        {
+            return str.Where(c => c.ToString() == searchedStr).Count();
         }
         #endregion
     }
