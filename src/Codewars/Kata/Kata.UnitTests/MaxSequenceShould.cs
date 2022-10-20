@@ -19,18 +19,6 @@ namespace Kata.UnitTests
     /// </summary>
     public class MaxSequenceShould
     {
-        //public static TheoryData<int, bool> DataForTest1 = new TheoryData<int, bool> {
-        //    { 1, true },
-        //    { 371, true }
-        //};
-
-        //[Theory]
-        //[MemberData(nameof(DataForTest1))]
-        //public void ReturnTrueWhenNumberIsNarcissistic(int number, bool result)
-        //{
-        //    var katas = new Katas();
-        //    Assert.Equal(result, katas.Narcissistic(number));
-        //}
         [Fact]
         public void ReturnZeroWhenArrayOnlyContainsOneZero()
         {
