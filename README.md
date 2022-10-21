@@ -2,4 +2,4 @@
 
 Some Training in TDD
 
-If you don't want to be spoiled on CodeWars Katas, show only the katas you solve yourself ;)
+If you don't want to be spoiled on CodeWars Katas, show only the katas you solved yourself ;)
