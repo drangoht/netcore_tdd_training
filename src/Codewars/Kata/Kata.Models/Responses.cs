@@ -62,4 +62,13 @@
         }
         public string Result { get; set; }
     }
+
+    public class GetPinsResponse
+    {
+        public GetPinsResponse()
+        {
+
+        }
+        public List<string> Results { get; set; }
+    }
 }

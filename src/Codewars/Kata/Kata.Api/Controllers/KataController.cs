@@ -91,6 +91,16 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+        [HttpPost("getpins")]
+        public ActionResult GetPins(string number)
+        {
+            var res = new GetPinsResponse()
+            {
+                Results = _katas.GetPINs(number)
+            };
+            return Ok(res);
+        }
+
     }
 }
 

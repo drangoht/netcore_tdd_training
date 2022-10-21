@@ -15,6 +15,7 @@ namespace Kata.Domain
 
         public int StrCount(string str, string searchedStr);
         public string RangeExtraction(int[] numbers);
+        public List<string> GetPINs(string observed);
     }
     public class Katas : IKatas
     {
@@ -133,6 +134,7 @@ namespace Kata.Domain
             return str.Where(c => c.ToString() == searchedStr).Count();
         }
         #endregion
+
         #region RangeExtraction
         public string RangeExtraction(int[] numbers)
         {
@@ -176,6 +178,14 @@ namespace Kata.Domain
                 result += tempResult;
 
             return result;
+        }
+        #endregion
+        #region GetPINS
+        public List<string> GetPINs(string observed)
+        {
+            PinPad pad = new PinPad();
+            List<string> results = new List<string>();
+            return pad.GetCombination(observed).OrderBy(c => c).ToList();
         }
         #endregion
     }
