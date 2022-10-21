@@ -91,6 +91,7 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+
         [HttpPost("getpins")]
         public ActionResult GetPins(string number)
         {
@@ -101,6 +102,15 @@ namespace Kata.Api.Controllers
             return Ok(res);
         }
 
+        [HttpPost("scramble")]
+        public ActionResult Scramble(string str, string strToSearch)
+        {
+            var res = new ScrambleResponse()
+            {
+                Result = _katas.Scramble(str, strToSearch)
+            };
+            return Ok(res);
+        }
     }
 }
 

@@ -16,6 +16,8 @@ namespace Kata.Domain
         public int StrCount(string str, string searchedStr);
         public string RangeExtraction(int[] numbers);
         public List<string> GetPINs(string observed);
+
+        public bool Scramble(string str, string strToSearch);
     }
     public class Katas : IKatas
     {
@@ -180,12 +182,30 @@ namespace Kata.Domain
             return result;
         }
         #endregion
+
         #region GetPINS
         public List<string> GetPINs(string observed)
         {
             PinPad pad = new PinPad();
             List<string> results = new List<string>();
             return pad.GetCombination(observed).OrderBy(c => c).ToList();
+        }
+        #endregion
+
+        #region Scramble
+        public bool Scramble(string str, string strToSearch)
+        {
+            int found = 0;
+            foreach (var c in strToSearch)
+            {
+                var idx = str.IndexOf(c);
+                if (idx != -1)
+                {
+                    str = str.Remove(idx, 1);
+                    found++;
+                }
+            }
+            return strToSearch.Length == found ? true : false;
         }
         #endregion
     }
