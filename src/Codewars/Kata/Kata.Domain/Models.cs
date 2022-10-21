@@ -48,7 +48,7 @@ namespace Kata.Domain
     }
     public class PinKey
     {
-        public string Number { get; set; }
+        public string? Number { get; set; }
         public List<string> NeighBours { get; set; } = new List<string>();
     }
 }

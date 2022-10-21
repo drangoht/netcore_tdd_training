@@ -6,7 +6,7 @@
         {
 
         }
-        public string Result { get; set; }
+        public string? Result { get; set; }
     }
 
     public class DuplicateEncodeResponse
@@ -15,7 +15,7 @@
         {
 
         }
-        public string Result { get; set; }
+        public string? Result { get; set; }
     }
 
     public class NarcissisticResponse
@@ -60,7 +60,7 @@
         {
 
         }
-        public string Result { get; set; }
+        public string? Result { get; set; }
     }
 
     public class GetPinsResponse
@@ -69,6 +69,15 @@
         {
 
         }
-        public List<string> Results { get; set; }
+        public List<string>? Results { get; set; }
+    }
+
+    public class ScrambleResponse
+    {
+        public ScrambleResponse()
+        {
+
+        }
+        public bool Result { get; set; }
     }
 }
