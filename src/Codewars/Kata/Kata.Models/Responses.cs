@@ -53,4 +53,13 @@
         }
         public int Result { get; set; }
     }
+
+    public class RangeExtractionResponse
+    {
+        public RangeExtractionResponse()
+        {
+
+        }
+        public string Result { get; set; }
+    }
 }

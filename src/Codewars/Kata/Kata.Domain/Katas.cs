@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Kata.Domain
 {
@@ -13,6 +14,7 @@ namespace Kata.Domain
         public bool IsValidIP(string ipAddres);
 
         public int StrCount(string str, string searchedStr);
+        public string RangeExtraction(int[] numbers);
     }
     public class Katas : IKatas
     {
@@ -129,6 +131,51 @@ namespace Kata.Domain
         public int StrCount(string str, string searchedStr)
         {
             return str.Where(c => c.ToString() == searchedStr).Count();
+        }
+        #endregion
+        #region RangeExtraction
+        public string RangeExtraction(int[] numbers)
+        {
+            int minIndex = -1;
+            int precIndex = int.MinValue;
+            string result = string.Empty;
+            string tempResult = string.Empty;
+            bool minSelected = false;
+            for(int index =0;index<numbers.Count();index++)
+            {
+                if (precIndex != int.MinValue)
+                {
+                    if (Math.Abs(numbers[index] - numbers[precIndex]) > 1)
+                    {
+                        if (!string.IsNullOrWhiteSpace(result))
+                            result += ",";
+                        if (Math.Abs(numbers[precIndex] - numbers[minIndex]) > 1)
+                            result += $"{numbers[minIndex]}-{numbers[precIndex]}";
+                        else
+                            result += tempResult;
+                        minSelected = false;
+                        tempResult = string.Empty;
+                    }
+                }
+                if (!minSelected)
+                {
+                    minSelected = true;
+                    minIndex = index;
+                }
+                if (!string.IsNullOrWhiteSpace(tempResult))
+                    tempResult += ",";
+                tempResult += $"{numbers[index]}";
+                precIndex = index;
+            }
+
+            if (!string.IsNullOrWhiteSpace(result))
+                result += ",";
+            if (Math.Abs(numbers[precIndex] - numbers[minIndex]) > 1)
+                result += $"{numbers[minIndex]}-{numbers[precIndex]}";
+            else
+                result += tempResult;
+
+            return result;
         }
         #endregion
     }
