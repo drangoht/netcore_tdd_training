@@ -81,6 +81,16 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+
+        [HttpPost("rangeextraction")]
+        public ActionResult RangeExtraction(int[] numbers)
+        {
+            var res = new RangeExtractionResponse()
+            {
+                Result = _katas.RangeExtraction(numbers)
+            };
+            return Ok(res);
+        }
     }
 }
 
