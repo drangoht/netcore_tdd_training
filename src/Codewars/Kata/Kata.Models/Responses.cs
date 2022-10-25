@@ -80,4 +80,13 @@
         }
         public bool Result { get; set; }
     }
+
+    public class AddBigNumberResponse
+    {
+        public AddBigNumberResponse()
+        {
+
+        }
+        public string Result { get; set; }
+    }
 }

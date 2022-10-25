@@ -111,6 +111,16 @@ namespace Kata.Api.Controllers
             };
             return Ok(res);
         }
+
+        [HttpPost("AddBigNumber")]
+        public ActionResult AddBigNumber(string str1, string str2)
+        {
+            var res = new AddBigNumberResponse()
+            {
+                Result = _katas.AddBigNumber(str1, str2)
+            };
+            return Ok(res);
+        }
     }
 }
 

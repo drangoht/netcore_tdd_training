@@ -18,6 +18,8 @@ namespace Kata.Domain
         public List<string> GetPINs(string observed);
 
         public bool Scramble(string str, string strToSearch);
+        public string AddBigNumber(string a, string b);
+
     }
     public class Katas : IKatas
     {
@@ -206,6 +208,42 @@ namespace Kata.Domain
                 }
             }
             return strToSearch.Length == found ? true : false;
+        }
+        #endregion
+
+        #region AddBigNumber
+        public string AddBigNumber(string a, string b)
+        {
+            var retainValue = 0;
+           
+            string strToAdd = a.Length >= b.Length ? a : b;
+            string strToBrowse = a.Length >= b.Length ? b : a;
+            int indexSecondString = strToBrowse.Length-1;
+            string result = string.Empty;
+            /// Looping on the longest number
+            for (int index = strToAdd.Length - 1; index >= 0; index--)
+            {
+                int numberToAdd;
+                // If the smallest number finished replace current digit by a 0
+                if ( indexSecondString < 0)
+                    numberToAdd = 0;
+                else
+                    numberToAdd = Convert.ToInt16(strToBrowse[indexSecondString].ToString());
+
+                // add last chars
+                var valAdded = Convert.ToInt16(strToAdd[index].ToString()) + numberToAdd;
+                // Calculation of the retain
+                valAdded += retainValue;
+                retainValue = Convert.ToInt16(valAdded / 10);
+                // Concatenate the right part
+                result = (valAdded - (retainValue * 10)).ToString() + result;
+                indexSecondString--;
+            }
+            // If a retainValue exist concat it 
+            if (retainValue > 0)
+                result = retainValue.ToString() + result;
+
+            return result; 
         }
         #endregion
     }
