@@ -20,6 +20,7 @@ namespace Kata.Domain
         public bool Scramble(string str, string strToSearch);
         public string AddBigNumber(string a, string b);
 
+        public int SumIntervals((int, int)[] intervals);
     }
     public class Katas : IKatas
     {
@@ -244,6 +245,35 @@ namespace Kata.Domain
                 result = retainValue.ToString() + result;
 
             return result; 
+        }
+
+
+        #endregion
+        #region SumIntervals
+        public int SumIntervals((int, int)[] intervals)
+        {
+            int resultSumOfIntervals = 0;
+            var compiledIntervals = CompileIntervals(intervals);
+            foreach (var interval in compiledIntervals)
+            {
+                resultSumOfIntervals += Math.Abs(interval.Item2 - interval.Item1);
+            }
+            return resultSumOfIntervals;
+        }
+        private (int, int)[] CompileIntervals((int, int)[] intervals)
+        {
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                for (int j = i + 1; j < intervals.Length; j++)
+                {
+                    if ((intervals[i].Item1 > intervals[j].Item1) && (intervals[i].Item1 < intervals[j].Item2))
+                        intervals[j].Item1 = intervals[i].Item1 + 1;
+                    if ((intervals[i].Item2 > intervals[j].Item1) && (intervals[i].Item2 < intervals[j].Item2))
+                        intervals[j].Item2 = intervals[i].Item2 + 1;
+
+                }
+            }
+            return intervals;
         }
         #endregion
     }
