@@ -95,5 +95,18 @@ namespace Kata.UnitTests
             Assert.Equal(2_000_000_000, _katas.SumIntervals(new Interval[] { (-1_000_000_000, 1_000_000_000) }));
             Assert.Equal(100_000_030, _katas.SumIntervals(new Interval[] { (0, 20), (-100_000_000, 10), (30, 40) }));
         }
+
+        [Fact]
+        public void ShouldHandleSmallRandomIntervals()
+        {
+            Assert.Equal(111, _katas.SumIntervals(new Interval[] { (473, 477), (-14, -9), (212, 219), (-44, -33), (38, 44), (-222, -204), (250, 263), (-190, -184), (468, 484), (294, 306), (45, 58), (35, 45) }));
+        }
+
+
+        [Fact]
+        public void ShouldHandleVerySmallRandomIntervals()
+        {
+            Assert.Equal(24, _katas.SumIntervals(new Interval[] { (-470, -455), (-479, -470), (0, 0) }));
+        }
     }
 }

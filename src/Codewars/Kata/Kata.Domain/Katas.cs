@@ -266,10 +266,26 @@ namespace Kata.Domain
             {
                 for (int j = i + 1; j < intervals.Length; j++)
                 {
-                    if ((intervals[i].Item1 > intervals[j].Item1) && (intervals[i].Item1 < intervals[j].Item2))
-                        intervals[j].Item1 = intervals[i].Item1 + 1;
-                    if ((intervals[i].Item2 > intervals[j].Item1) && (intervals[i].Item2 < intervals[j].Item2))
-                        intervals[j].Item2 = intervals[i].Item2 + 1;
+
+                    if ((intervals[j].Item1 >= intervals[i].Item1) && (intervals[j].Item1 <= intervals[i].Item2))
+                    {
+                        intervals[j].Item1 = intervals[i].Item2;
+                    }
+                    if ((intervals[j].Item2 >= intervals[i].Item1) && (intervals[j].Item2 <= intervals[i].Item2))
+                    {
+                        intervals[j].Item2 = intervals[i].Item1;
+                    }
+                    // Full overlaped so cancel the interval
+                    if (((intervals[j].Item1 >= intervals[i].Item1) && (intervals[j].Item1 <= intervals[i].Item2)) &&
+                       ((intervals[j].Item2 >= intervals[i].Item1) && (intervals[j].Item2 <= intervals[i].Item2)))
+                    {
+                        intervals[j].Item1 = intervals[j].Item2 = 0;
+                    }
+                    if (((intervals[i].Item1 >= intervals[j].Item1) && (intervals[i].Item1 <= intervals[j].Item2)) &&
+                     ((intervals[i].Item2 >= intervals[j].Item1) && (intervals[i].Item2 <= intervals[j].Item2)))
+                    {
+                        intervals[i].Item1 = intervals[i].Item2 = 0;
+                    }
 
                 }
             }
